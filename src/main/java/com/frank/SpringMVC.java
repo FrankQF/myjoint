@@ -10,4 +10,8 @@ public class SpringMVC {
 		System.out.println("Hello");
 		return "Hello";
 	}
+	
+	public SpringMVC(){
+		System.out.println("SpringMVC controller constructed...");
+	}
 }
