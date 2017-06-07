@@ -5,20 +5,23 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	<!-- 启动 Spring 的IOC容器 -->
- 	<context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/*.xml</param-value>
+		<param-value>classpath:spring/beans.xml</param-value>
+	</context-param>
+	<!-- 可以对beans中配置profile的起作用，作用是加载beans中定义profile名称相同的配置，beans中未定义profile的则都加载。 -->
+	<!-- 可以在运行tomcat时候通过添加运行参数 -Dspring.profiles.active="prod" 来指定需要使用的profile 在eclipse 的run-Run Configuration 中设置-->
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>prod</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<!-- 启动 Spring MVC 的IOC容器 -->
-
+	
 	<servlet>
-		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-name>springmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!--init-param 只在此servlet中有效  -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/springmvc-servlet.xml</param-value>
@@ -26,20 +29,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-<!-- 	<servlet>
-		<servlet-name>springmvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:springmvc-servlet.xml</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping> -->
 </web-app>
