@@ -13,7 +13,7 @@
 	<!-- 可以在运行tomcat时候通过添加运行参数 -Dspring.profiles.active="prod" 来指定需要使用的profile 在eclipse 的run-Run Configuration 中设置-->
 	<context-param>
 		<param-name>spring.profiles.default</param-name>
-		<param-value>prod</param-value>
+		<param-value>dev</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
